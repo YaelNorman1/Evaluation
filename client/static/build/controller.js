@@ -1,2 +1,24 @@
 "use strict";
-console.log("hello111");
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const recipesModule = new RecipesDataModule();
+const render = new Render();
+$("#submitIngredient").on("click", function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const ingredientFromUser = get_data_from_input();
+        yield recipesModule.generateAllRecipes(ingredientFromUser);
+        render.renderRecipesToScreen(recipesModule.getRecipes());
+        // i need to add the query params of sensetivity
+    });
+});
+function get_data_from_input() {
+    const ingredientName = document.getElementById("input_ingredient").value;
+    return { 'ingredientName': ingredientName };
+}

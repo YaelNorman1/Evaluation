@@ -1,6 +1,5 @@
 import pymysql 
 
-
 connection = pymysql.connect(
     host="localhost",
     user="root",
@@ -10,12 +9,16 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
-def insert_ingredient_to_table(product, table_name):
+
+def check_if_ingredient_in_table(product, table_name):
     try:
         with connection.cursor() as cursor:
-            query = f'INSERT IGNORE INTO {table_name} VALUES (null, "{product}")'
+            query = f'''SELECT *
+                        FROM {table_name} 
+                        WHERE ingredient_name = "{product}"'''
             cursor.execute(query)
-            connection.commit()
-            return {"Success" : "Added pokemon successfuly"}
+            result = cursor.fetchall()
+            return result
     except TypeError as e:
         print(e)
+

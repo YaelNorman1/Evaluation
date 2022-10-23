@@ -12,4 +12,3 @@ USE recipes_app;
 --     ingredient_name VARCHAR(50)
 -- );
 
--- INSERT IGNORE INTO dairy_ingredients VALUES (null, "Cream")

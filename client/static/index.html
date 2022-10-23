@@ -9,11 +9,47 @@
     <title>Document</title>
 </head>
 <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2 form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheck">
+                <label class="form-check-label" for="glutenFree">Gluten Free</label>
+            </div>
+            <div class="col-2 form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheck">
+                <label class="form-check-label" for="glutenFree">Dairy Free</label>
+            </div>
+            <div class="col-6 form-group">
+                <input type="text" class="form-control" id="input_ingredient" placeholder="Enter Ingredient">
+            </div>
+            <button type="submit" class="col-2 btn btn-primary" id="submitIngredient">Submit</button>
 
+            <div class="container">
+                <div class="row recipes-container">
+                </div>
+            </div>
 
+        </div>
+    </div>
+    <script id="recipe-template" type="text/x-handlebars-template">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+            <div class="card rounded text-center player-info">
+                <div class="card-body">
+                    <h2 class="title">{{recipe.title}}</h2> 
+                    <!-- i wanted to add list for ingerints -->
+                    <div class="ingredients">Ingredients: {{recipe.ingredients}}</div>
+                    <div class="instructions">Instructions: {{recipe.strInstructions}}</div>
+                    <img class="recipe-pic" src="{{recipe.thumbnail}}">
+                </div>
+            </div>
+        </div>
+    </script>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="/client/static/build/recipe.js"></script>
+    <script src="/client/static/build/recipeModule.js"></script>
+    <script src="/client/static/build/renderRecipes.js"></script>
     <script src="/client/static/build/controller.js"></script>
 </body>
 </html>
